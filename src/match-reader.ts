@@ -1,3 +1,4 @@
+import { CsvFileReader } from "./csv-file-reader";
 import { MatchData } from "./match-data";
 import { MatchResult } from "./match-result";
 
@@ -10,6 +11,10 @@ export class MatchReader {
   private _matches: MatchData[] = [];
 
   constructor(private _reader: DataReader) {}
+
+  static fromCsv(filename: string): MatchReader {
+    return new MatchReader(new CsvFileReader(filename));
+  }
 
   async load(): Promise<void> {
     await this._reader.read();

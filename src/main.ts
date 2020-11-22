@@ -1,17 +1,12 @@
-import { WinsAnalysis } from "./analyzers/wins-analysis";
-import { CsvFileReader } from "./csv-file-reader";
 import { MatchReader } from "./match-reader";
-import { ConsoleReport } from "./reporters/console-report";
 import { Summary } from "./summary";
 
 const bootstrap = async () => {
-  const matchReader = new MatchReader(new CsvFileReader("football.csv"));
+  const matchReader = MatchReader.fromCsv("football.csv");
+  const summary = Summary.winsAnalysisWithConsoleReport("Man United");
+
   await matchReader.load();
-  const summary = new Summary(
-    new WinsAnalysis("Man United"),
-    new ConsoleReport()
-  );
-  summary.buildAndReport(matchReader.matches);
+  await summary.buildAndReport(matchReader.matches);
 };
 
 bootstrap().catch(console.error);

@@ -1,7 +1,7 @@
 import { OutputTarget } from "../summary";
 
 export class ConsoleReport implements OutputTarget {
-  print(report: string) {
+  async print(report: string): Promise<void> {
     console.log(report);
   }
 }

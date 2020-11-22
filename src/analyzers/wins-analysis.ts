@@ -5,7 +5,7 @@ import { Analyzer } from "../summary";
 export class WinsAnalysis implements Analyzer {
   constructor(private _team: string) {}
 
-  run(matches: MatchData[]): string {
+  async run(matches: MatchData[]): Promise<string> {
     const mapWins = (match: MatchData): number => {
       const homeWin =
         match[1] === this._team && match[5] === MatchResult.HOME_WIN;
