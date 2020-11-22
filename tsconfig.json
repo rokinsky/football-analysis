@@ -1,0 +1,7 @@
+{
+  "extends": "@rokinsky/tsconfig",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "baseUrl": "./",
+  }
+}
